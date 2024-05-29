@@ -4,7 +4,6 @@ from io import BytesIO
 
 image = st.file_uploader("Upload Image")
 
-
 if image is not None:
     image = Image.open(image)
     with st.expander("Image"):
@@ -24,8 +23,8 @@ if image is not None:
         if flip_y:
             image = ImageOps.flip(image)
 
-
         with st.popover("Download image"):
+            image_format = st.selectbox("Image format", ['png', 'jpg', 'webp', 'tiff', "gif", 'jfif'])
             bio = BytesIO()
             image.save(bio, 'PNG')
-            st.download_button("Download image", bio, "image.png")
+            st.download_button("Download image", bio, f"image.{image_format}")
