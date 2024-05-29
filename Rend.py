@@ -18,6 +18,7 @@ if image is not None:
             flip_y = st.checkbox("Flip Y")
             st.divider()
             enhance = st.checkbox("Enhance")
+            sharpen = st.checkbox("Sharpen")
 
             if flip_x:
                 image = ImageOps.mirror(image)
@@ -26,6 +27,9 @@ if image is not None:
 
             if enhance:
                 image = image.filter(ImageFilter.EDGE_ENHANCE())
+
+            if sharpen:
+                image = image.filter(ImageFilter.SHARPEN())
 
         st.image(image, use_column_width=True)
 
