@@ -27,4 +27,4 @@ if image is not None:
             image_format = st.selectbox("Image format", ['png', 'jpg', 'webp', 'tiff', "gif", 'jfif'])
             bio = BytesIO()
             image.save(bio, 'PNG')
-            st.download_button("Download image", bio, f"image.{image_format}")
+            st.download_button("Download image", bio, f"image.{image_format}", type="primary", use_container_width=True)
